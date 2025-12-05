@@ -101,6 +101,12 @@ header {
   padding: 0 1.5rem;
 }
 
+@media (max-width: 599px) {
+  .header-container {
+    margin: 0;
+  }
+}
+
 .header-container h1 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -155,11 +161,18 @@ main {
   opacity: 0.7;
 }
 
+
 .get-started-container {
   z-index: 1;
   border-radius: 30px;
   padding: 60px 60px;
   margin: 10px;
+}
+
+@media (max-width: 599px) {
+  .get-started-container {
+    padding: 0;
+  }
 }
 
 .get-started-container h1 {
