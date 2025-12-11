@@ -4,12 +4,6 @@
     overflow: hidden;
 }
 
-.auto-search-wrapper {
-    position: fixed;
-    z-index: 1000000000000;
-    color: black;
-}
-
 .top-bar {
     position: fixed;
     z-index: 100000000;
@@ -49,6 +43,26 @@
 .top-bar .icon {
     touch-action: manipulation;
     height: 40px;
+}
+
+.auto-search-wrapper {
+    color: black;
+    margin: 0 10px;
+}
+
+.auto-search-wrapper input,
+.auto-search-wrapper input:focus,
+.auto-search-wrapper input:active,
+.auto-results-wrapper {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    border-radius: 20px;
+}
+
+.auto-results-wrapper {
+    background-color: white;
+    margin-top: 15px !important;
+    border: 2px solid var(--translucid-black);
 }
 
 .marker-control-toggle {
