@@ -3,6 +3,13 @@
     touch-action: none;
     overflow: hidden;
 }
+
+.auto-search-wrapper {
+    position: fixed;
+    z-index: 1000000000000;
+    color: black;
+}
+
 .top-bar {
     position: fixed;
     z-index: 100000000;

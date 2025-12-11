@@ -9,6 +9,7 @@ import { addPolyline } from './mapUtilities/polylines';
 import { addMarkers } from './mapUtilities/points';
 import { addUserMarker } from './mapUtilities/userMarker';
 import { initGPS } from './mapUtilities/gpsRealTime';
+import { getSearch } from './mapUtilities/search';
 
 document.addEventListener('DOMContentLoaded', () => {
   const config = {
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   addMarkers(map);
   addUserMarker(map);
   initGPS(map);
+  getSearch(map);
 
   // This removes the context menu for all the images
   document.querySelectorAll('img').forEach((img) => {
