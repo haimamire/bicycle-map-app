@@ -154,9 +154,11 @@ img {
 /* Selects both layer control pictures individually */
 .leaflet-control-layers-base label:first-child .layer-control-image {
     border-radius: 20px 20px 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .leaflet-control-layers-base label:last-child .layer-control-image {
     border-radius: 0 0 20px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .layer-control-image {

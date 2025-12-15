@@ -3,6 +3,7 @@
     touch-action: none;
     overflow: hidden;
 }
+
 .top-bar {
     position: fixed;
     z-index: 100000000;
@@ -41,7 +42,38 @@
 
 .top-bar .icon {
     touch-action: manipulation;
-    height: 40px;
+    height: 45px;
+    opacity: 0.9;
+}
+
+.auto-search-wrapper {
+    color: black;
+    margin: 0 10px;
+}
+
+.auto-search-wrapper input,
+.auto-search-wrapper input:focus,
+.auto-search-wrapper input:active {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0 !important;
+    border-radius: 20px;
+    font-size: 1.1rem;
+}
+
+.auto-search-wrapper input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.auto-search-wrapper .auto-clear {
+    margin-top: 4px;
+}
+
+.auto-results-wrapper {
+    background-color: white;
+    margin-top: 15px !important;
+    border: 2px solid var(--translucid-black);
+    border-radius: 20px;
+    font-size: 1.1rem;
 }
 
 .marker-control-toggle {

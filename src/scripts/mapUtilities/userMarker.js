@@ -38,8 +38,6 @@ export function addUserMarker(map) {
         }).addTo(map);
         document.querySelector('body').appendChild(userMarkerPopup);
 
-        // Routing related
-
         // Removes marker if there are more than 1, or if close button is pressed
         const markers = document.querySelectorAll('.user-marker');
         if (markers.length > 1) removeMarker();
