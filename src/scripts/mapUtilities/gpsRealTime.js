@@ -7,7 +7,7 @@ export function initGPS(map) {
   //   return;
   // }
 
-  L.control.locate({
+  const location = L.control.locate({
     position: 'bottomright',
     clickBehavior: {
       inView: 'setView',
@@ -17,6 +17,8 @@ export function initGPS(map) {
     keepCurrentZoomLevel: true,
   })
   .addTo(map);
+
+  location.start();
 
   // let marker = null;
   // let accuracyCircle = null;

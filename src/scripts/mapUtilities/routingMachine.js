@@ -7,7 +7,7 @@ let lastLng = null;
 export function drawRoute(map, destinationLat, destinationLng, fitToWindow){
     // Must have GPS ready
     if(window.currentLat == null || window.currentLng == null){
-        alert("GPS not ready yet.");
+        alert("GPSを取得中です...");
         return;
     }
 
