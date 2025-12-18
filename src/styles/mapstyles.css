@@ -104,22 +104,44 @@ img {
 }
 
 /* Gps button controls */
-.gps-button.leaflet-control {
+/* .gps-button.leaflet-control {
     margin: 0;
     margin-right: 8px;
     width: 54px;
     height: 54px;
     border: 3px solid var(--translucid-white);
     outline: 2px solid var(--translucid-black);
-    /* align-self: center; */
     border-radius: 50%;
     cursor: pointer;
     background-repeat: no-repeat;
     background-size: cover;
     transition: 0.3s ease;
+} */
+
+.leaflet-control-locate {
+    margin-right: 10px !important;
+    margin-bottom: 4px !important;
+    border: 0 !important;
+    outline: 2px solid var(--translucid-black);
 }
 
-.gps-button.leaflet-control.active {
+.leaflet-bar-part.leaflet-bar-part-single,
+.leaflet-control-locate {
+    margin: 0;
+    border-radius: 50% !important;
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaflet-bar-part.leaflet-bar-part-single > span {
+    min-width: 26px;
+    min-height: 26px;
+}
+
+/* .gps-button.leaflet-control.active {
     filter: brightness(1.3) !important;
     transition: 0.3s ease;
     animation: border-pulse 2s infinite;
@@ -128,7 +150,7 @@ img {
 .gps-button.leaflet-control:hover {
     filter: brightness(1.2);
     transition: 0.3s ease;
-}
+} */
 
 /* Map layer change controls */
 .leaflet-control-layers.leaflet-control-layers-expanded.leaflet-control {
@@ -212,11 +234,19 @@ img {
     }
 }
 
-.gps-icon {
+/* .gps-icon {
     z-index: 100000000 !important;
 }
 
 .gps-icon img {
+    border-radius: 100%;
+    animation: border-pulse 2s infinite;
+} */
+.leaflet-control-locate-location {
+    z-index: 100000000 !important;
+}
+
+.leaflet-control-locate-location {
     border-radius: 100%;
     animation: border-pulse 2s infinite;
 }
