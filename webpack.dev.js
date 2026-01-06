@@ -1,6 +1,6 @@
 // webpack.config.js
 const path = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -22,6 +22,13 @@ module.exports = {
     port: 8080,
     watchFiles: ['./src/template.html', './src/*.html'],
     allowedHosts: 'all',
+    server: {
+      type: 'https',
+      options: {
+        key: fs.readFileSync('./localhost+1-key.pem'),
+        cert: fs.readFileSync('./localhost+1.pem'),
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({

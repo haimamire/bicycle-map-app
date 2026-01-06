@@ -52,7 +52,7 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow){
     }).addTo(map);
 
     const osrmBikeRouter = L.Routing.osrmv1({
-        serviceUrl: 'http://192.168.11.4:5000/route/v1',
+        serviceUrl: 'http://10.40.163.191:5000/route/v1',
         profile: 'bike',
     })
 
@@ -105,5 +105,5 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow){
         lastLng = window.currentLng;
 
         drawRoute(map, destinationLat, destinationLng, false);
-    }, 5000);
+    }, 10000);
 }
