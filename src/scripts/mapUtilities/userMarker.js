@@ -9,8 +9,8 @@ export function addUserMarker(map) {
         iconAnchor: [20, 40],
     });
 
-    map.on("contextmenu", addMarker);
-    // map.on("click", addMarker);
+    // map.on("contextmenu", addMarker);
+    map.on("click", addMarker);
 
     function addMarker(e) {
         const latStr = JSON.stringify(e.latlng.lat);

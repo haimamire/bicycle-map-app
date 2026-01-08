@@ -23,9 +23,18 @@
     text-align: left;
 }
 
+@media (max-width: 599px) {
+    .main-container {
+        margin: 50px 20px;
+    }
+    .about-container {
+        padding: 30px;
+    }
+}
+
 .main-container .developers-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 20px; 
 }
 
@@ -44,9 +53,18 @@
 
 .developer-image {
     border-radius: 30px 30px 0 0;
-    background-image: url(https://i.natgeofe.com/n/82fddbcc-4cbb-4373-bf72-dbc30068be60/drill-monkey-01.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.developer-image.mario {
+    background-image: url(../img/about/mario.jpg);
+}
+.developer-image.ivan {
+    background-image: url(../img/about/ivan.jpg);
+}
+.developer-image.batto {
+    background-image: url(../img/about/batto.jpg);
 }
 
 .developer-card:hover {
