@@ -348,11 +348,14 @@ a.leaflet-popup-close-button {
     background-color: white;
 }
 
-.leaflet-routing-container tr:nth-child(2) {
-    font-size: 1.8rem;
+.leaflet-routing-container tr:first-child {
+    font-size: 2.5rem;
     font-weight: bold;
     background-color: var(--yellow);
+}
 
+.leaflet-routing-container tr:last-child {
+    margin-bottom: 30px;
 }
 
 .leaflet-routing-container td:last-child {
@@ -393,9 +396,14 @@ a.leaflet-popup-close-button {
 .leaflet-routing-container .leaflet-routing-instruction-distance,
 .leaflet-routing-container h2,
 .leaflet-routing-container h3,
-.leaflet-routing-container td:has(span),
-.leaflet-routing-container tr:first-child {
+.leaflet-routing-container td:has(span) {
     display: none;
+}
+
+@media (max-width: 599px) {
+    .leaflet-routing-container tr {
+        min-width: 100vw;
+    }
 }
 
 @media (min-width: 600px) {
