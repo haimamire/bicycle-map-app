@@ -54,6 +54,8 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
     icon: markerIcon,
   }).addTo(map);
 
+  let lastStepDistance = 0;
+
   const osrmBikeRouter = L.Routing.osrmv1({
     serviceUrl: 'http://localhost:5000/route/v1',
     // USE ONLY FOR DEMO VIDEO OUTSIDE
@@ -63,10 +65,11 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
       const currentStep = {
         type: step.maneuver.type,
         modifier: step.maneuver.modifier,
-        distance: step.distance,
+        distance: lastStepDistance,
         location: step.maneuver.location,
       };
       allDirections.push(currentStep);
+      lastStepDistance = step.distance;
 
       const m = step.maneuver || {};
       const name = step.name ? `（${step.name}）` : '';
@@ -147,7 +150,9 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
   //   );
   // }
 
+  // Change interval to something lower when working with local osrm server
   setTimeout(() => {
+    fixDistancesPosition();
     playAudioDirection(allDirections);
   }, 500);
 
@@ -158,5 +163,20 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
     lastLng = window.currentLng;
 
     drawRoute(map, destinationLat, destinationLng, false);
-  }, 1000000);
+  }, 10000);
+}
+
+function fixDistancesPosition() {
+  const tRows = document.querySelectorAll(
+    '.leaflet-routing-container tbody tr td:last-child',
+  );
+
+  let lastDistance = '0 m';
+  let nextDistance;
+
+  tRows.forEach((row) => {
+    nextDistance = row.textContent;
+    row.textContent = lastDistance;
+    lastDistance = nextDistance;
+  });
 }

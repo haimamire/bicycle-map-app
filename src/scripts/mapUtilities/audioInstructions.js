@@ -5,6 +5,7 @@ export function resetAudioHistory() {
 }
 
 export function playAudioDirection(allDirections) {
+  // console.log(allDirections);
   const currentDirection = allDirections[1];
   if (isValid(currentDirection)) {
     lastLocation = currentDirection.location;
