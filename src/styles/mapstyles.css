@@ -348,7 +348,7 @@ a.leaflet-popup-close-button {
     background-color: white;
 }
 
-.leaflet-routing-container tr:first-child {
+.leaflet-routing-container tr:nth-child(2) {
     font-size: 2.5rem;
     font-weight: bold;
     background-color: var(--yellow);
@@ -396,7 +396,8 @@ a.leaflet-popup-close-button {
 .leaflet-routing-container .leaflet-routing-instruction-distance,
 .leaflet-routing-container h2,
 .leaflet-routing-container h3,
-.leaflet-routing-container td:has(span) {
+.leaflet-routing-container td:has(span),
+.leaflet-routing-container tr:first-child {
     display: none;
 }
 
