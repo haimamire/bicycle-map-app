@@ -37,13 +37,6 @@ iframe {
     }
 }
 
-/* .top-bar:hover {
-    transition: 500ms;
-    opacity: 1;
-    filter: none;
-    transform: scale(calc(calc(100vw - calc(var(--ui-side-margins) * 2)) / 90vw));
-} */
-
 .top-bar .icon {
     touch-action: manipulation;
     height: 45px;

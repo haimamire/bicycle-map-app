@@ -8,7 +8,6 @@ function addScript(src, type) {
   s.setAttribute('src', src);
 
   if (type === 'script') {
-    // s.setAttribute("defer", true);
     document.body.appendChild(s);
   } else {
     s.setAttribute('rel', 'stylesheet');
@@ -18,14 +17,3 @@ function addScript(src, type) {
 
 const btnActive = document.querySelector('.btn-active');
 const mapContainer = document.querySelector('#map');
-// btnActive.addEventListener('click', () => {
-//   // remove elements from map container
-//   mapContainer.textContent = '';
-//   addScript(
-//     'https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js',
-//     'script',
-//   );
-//   setTimeout(() => {
-//     addScript('./script.js', 'script');
-//   }, 1000);
-// });
