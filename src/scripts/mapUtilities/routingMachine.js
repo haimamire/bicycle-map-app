@@ -59,8 +59,8 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
 
   const osrmBikeRouter = L.Routing.osrmv1({
     // USE ONLY FOR DEMO VIDEO OUTSIDE
-    serviceUrl: 'https://routing.openstreetmap.de/routed-bike/route/v1',
-    // serviceUrl: 'http://localhost:5000/route/v1',
+    // serviceUrl: 'https://routing.openstreetmap.de/routed-bike/route/v1',
+    serviceUrl: 'http://localhost:5000/route/v1',
     profile: 'bike',
     stepToText(step) {
       const currentStep = {
@@ -160,9 +160,15 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
 
   if (routeInterval) clearInterval(routeInterval);
   routeInterval = setInterval(() => {
-    if (window.currentLat === lastLat && window.currentLng === lastLng) return;
-    lastLat = window.currentLat;
-    lastLng = window.currentLng;
+    if (
+      window.currentLat.toFixed(4) === lastLat &&
+      window.currentLng.toFixed(4) === lastLng
+    )
+      return;
+    lastLat = window.currentLat.toFixed(4);
+    lastLng = window.currentLng.toFixed(4);
+    console.log(lastLng);
+    console.log(lastLat);
 
     drawRoute(map, destinationLat, destinationLng, false);
   }, 10000);
