@@ -130,6 +130,14 @@ img {
     min-height: 26px;
 }
 
+.leaflet-control-locate-location circle {
+    animation: none !important;
+}
+
+.leaflet-control-locate-heading {
+    z-index: 10000000000 !important;
+}
+
 /* Map layer change controls */
 .leaflet-control-layers.leaflet-control-layers-expanded.leaflet-control {
     background-color: var(--translucid-white);
@@ -304,7 +312,7 @@ a.leaflet-popup-close-button {
 }
 
 .leaflet-routing-container table {
-    margin-bottom: 120px;
+    margin-bottom: 150px;
 }
 
 .leaflet-routing-container tr {
@@ -356,7 +364,7 @@ a.leaflet-popup-close-button {
 
 .leaflet-routing-collapse-btn::after {
     content: "x";
-    height: 30px;
+    height: 34px;
 }
 
 

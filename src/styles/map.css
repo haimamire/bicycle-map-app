@@ -82,7 +82,7 @@ iframe {
     position: fixed;
     left: 50%;
     transform: translate(-50%);
-    bottom: calc(107vh - var(--map-height));
+    bottom: calc(107svh - var(--map-height));
     z-index: 100000000;
     width: 200px;
     padding: 10px;

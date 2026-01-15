@@ -28,7 +28,7 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
   });
 
   const root = document.querySelector(':root');
-  root.style.setProperty('--map-height', '74svh');
+  root.style.setProperty('--map-height', '79svh');
 
   const collapseBtn = document.createElement('span');
   collapseBtn.className = 'leaflet-routing-collapse-btn';
@@ -58,8 +58,6 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
   let lastStepDistance = 0;
 
   const osrmBikeRouter = L.Routing.osrmv1({
-    // OLD ONE
-    // serviceUrl: 'https://router.project-osrm.org/route/v1',
     // USE ONLY FOR DEMO VIDEO OUTSIDE
     serviceUrl: 'https://routing.openstreetmap.de/routed-bike/route/v1',
     // serviceUrl: 'http://localhost:5000/route/v1',
@@ -75,7 +73,7 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
       lastStepDistance = step.distance;
 
       const m = step.maneuver || {};
-      const name = step.name ? `（${step.name}）` : '';
+      const name = step.name ? ` (${step.name}) ` : '';
 
       switch (m.type) {
         case 'depart':
