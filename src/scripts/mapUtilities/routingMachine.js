@@ -151,11 +151,12 @@ export function drawRoute(map, destinationLat, destinationLng, fitToWindow) {
     );
   }
 
-  // Set timeout to something higher when working with demo osrm server
-  setTimeout(() => {
-    fixDistances();
-    playAudioDirection(allDirections);
-  }, 50);
+  window.routingControl.on('routesfound', () => {
+    setTimeout(() => {
+      fixDistances();
+      playAudioDirection(allDirections);
+    }, 1);
+  });
 
   if (routeInterval) clearInterval(routeInterval);
   routeInterval = setInterval(() => {
