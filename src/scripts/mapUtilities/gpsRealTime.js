@@ -1,11 +1,12 @@
+/* eslint-disable no-undef */
 export function initGPS(map) {
   const location = L.control
     .locate({
-      position: "bottomright",
+      position: 'bottomright',
       clickBehavior: {
-        inView: "setView",
-        inViewNotFollowing: "setView",
-        outOfView: "setView",
+        inView: 'setView',
+        inViewNotFollowing: 'setView',
+        outOfView: 'setView',
       },
       keepCurrentZoomLevel: true,
       showPopup: false,
@@ -25,13 +26,14 @@ export function initGPS(map) {
     window.currentLng = lon;
   }
 
+  // eslint-disable-next-line no-unused-vars
   const watchId = navigator.geolocation.watchPosition(
     update,
-    (err) => console.log("Geolocation error:", err),
+    (err) => console.log('Geolocation error:', err),
     {
       enableHighAccuracy: true,
       maximumAge: 0,
       timeout: 20000,
-    }
+    },
   );
 }

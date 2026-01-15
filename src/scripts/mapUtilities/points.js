@@ -1,11 +1,12 @@
-import "leaflet.markercluster";
+/* eslint-disable no-undef */
+import 'leaflet.markercluster';
 
-import { imagesDescsLinks, DataAccess } from "./pointsData";
-import { addRoutingBtn } from "./routingButton";
+import { imagesDescsLinks, DataAccess } from './pointsData';
+import { addRoutingBtn } from './routingButton';
 
-import konbiniIcon from "../../img/icons/shopping-bag.png";
-import repairIcon from "../../img/icons/wrench.png";
-import parkIcon from "../../img/icons/park.png";
+import konbiniIcon from '../../img/icons/shopping-bag.png';
+import repairIcon from '../../img/icons/wrench.png';
+import parkIcon from '../../img/icons/park.png';
 
 export function addMarkers(map) {
   // Marker clusters declarations
@@ -24,7 +25,7 @@ export function addMarkers(map) {
   const createIcon = (category) =>
     L.divIcon({
       html: `<img src="${category}" style="width: 20px; height: 20px;">`,
-      className: "custom-colored-marker",
+      className: 'custom-colored-marker',
       iconSize: [20, 20],
       iconAnchor: [10, 5],
     });
@@ -38,20 +39,20 @@ export function addMarkers(map) {
   Object.keys(imagesDescsLinks).forEach((category) => {
     imagesDescsLinks[category].forEach((item) => {
       const popupContent = (function () {
-        const content = document.createElement("div");
-        const imageWrapper = document.createElement("div");
-        const image = document.createElement("img");
-        const title = document.createElement("p");
-        const url = document.createElement("a");
+        const content = document.createElement('div');
+        const imageWrapper = document.createElement('div');
+        const image = document.createElement('img');
+        const title = document.createElement('p');
+        const url = document.createElement('a');
         const routingBtn = addRoutingBtn(map, item.lat, item.lng);
 
         title.textContent = item.desc;
-        url.textContent = "Google Mapsで開く";
-        url.setAttribute("href", item.link);
-        url.setAttribute("target", "_blank");
+        url.textContent = 'Google Mapsで開く';
+        url.setAttribute('href', item.link);
+        url.setAttribute('target', '_blank');
 
-        imageWrapper.className = "image-wrapper";
-        image.setAttribute("src", item.imageSrc);
+        imageWrapper.className = 'image-wrapper';
+        image.setAttribute('src', item.imageSrc);
         imageWrapper.appendChild(image);
 
         content.appendChild(imageWrapper);
@@ -72,17 +73,17 @@ export function addMarkers(map) {
       }).setContent(popupContent);
 
       const marker = L.marker([item.lat, item.lng], {
-        icon: createIcon(categoryImages[category] || "gray"),
+        icon: createIcon(categoryImages[category] || 'gray'),
       }).bindPopup(markerPopup);
 
       switch (category) {
-        case "konbinis":
+        case 'konbinis':
           konbMarkerCluster.addLayer(marker);
           break;
-        case "repair":
+        case 'repair':
           repairMarkerCluster.addLayer(marker);
           break;
-        case "parking":
+        case 'parking':
           parkMarkerCluster.addLayer(marker);
           break;
         default:
@@ -92,35 +93,35 @@ export function addMarkers(map) {
   });
 
   // Marker control declarations
-  const markerControlIcon = document.querySelector(".marker-control-toggle");
-  markerControlIcon.addEventListener("click", () => {
-    const controlDiv = document.querySelector(".marker-control");
-    controlDiv.classList.contains("hidden")
-      ? controlDiv.classList.remove("hidden")
-      : controlDiv.classList.add("hidden");
+  const markerControlIcon = document.querySelector('.marker-control-toggle');
+  markerControlIcon.addEventListener('click', () => {
+    const controlDiv = document.querySelector('.marker-control');
+    controlDiv.classList.contains('hidden')
+      ? controlDiv.classList.remove('hidden')
+      : controlDiv.classList.add('hidden');
   });
 
   const markerControl = L.Control.extend({
     options: {
-      position: "topright",
+      position: 'topright',
     },
     onAdd() {
-      const div = L.DomUtil.create("div");
+      const div = L.DomUtil.create('div');
       L.DomEvent.disableClickPropagation(div);
 
       const konbBtn = this.createButton(
-        "コンビニ",
+        'コンビニ',
         konbMarkerCluster,
-        "konbini"
+        'konbini',
       );
       const repairBtn = this.createButton(
-        "修理店",
+        '修理店',
         repairMarkerCluster,
-        "repair"
+        'repair',
       );
-      const parkingBtn = this.createButton("駐輪場", parkMarkerCluster, "park");
+      const parkingBtn = this.createButton('駐輪場', parkMarkerCluster, 'park');
 
-      div.className = "marker-control hidden";
+      div.className = 'marker-control hidden';
       div.appendChild(konbBtn);
       div.appendChild(repairBtn);
       div.appendChild(parkingBtn);
@@ -128,10 +129,11 @@ export function addMarkers(map) {
       return div;
     },
     createButton(label, cluster, id) {
-      const btn = L.DomUtil.create("button");
+      const btn = L.DomUtil.create('button');
       btn.dataset.id = id;
       btn.textContent = label;
 
+      // eslint-disable-next-line eqeqeq
       if (localStorage.getItem(id) == false) {
         this.removeClusterLayer(cluster, btn, id);
       } else {
@@ -139,7 +141,7 @@ export function addMarkers(map) {
       }
 
       btn.onclick = () => {
-        if (btn.classList.contains("unchecked")) {
+        if (btn.classList.contains('unchecked')) {
           this.addClusterLayer(cluster, btn, id);
         } else {
           this.removeClusterLayer(cluster, btn, id);
@@ -151,8 +153,8 @@ export function addMarkers(map) {
       masterMarkerCluster.addLayer(cluster);
       map.addLayer(masterMarkerCluster);
 
-      btn.classList.remove("unchecked");
-      btn.classList.add("checked");
+      btn.classList.remove('unchecked');
+      btn.classList.add('checked');
 
       localStorage.setItem(id, 1);
     },
@@ -160,14 +162,15 @@ export function addMarkers(map) {
       masterMarkerCluster.removeLayer(cluster);
       map.addLayer(masterMarkerCluster);
 
-      btn.classList.remove("checked");
-      btn.classList.add("unchecked");
+      btn.classList.remove('checked');
+      btn.classList.add('unchecked');
 
       localStorage.setItem(id, 0);
     },
   });
+  // eslint-disable-next-line new-cap
   map.addControl(new markerControl());
 
   // Log category statistics
-  console.log("Category Statistics:", DataAccess.getCategoryStats());
+  console.log('Category Statistics:', DataAccess.getCategoryStats());
 }

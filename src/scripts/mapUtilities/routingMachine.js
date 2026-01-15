@@ -1,3 +1,5 @@
+/* eslint-disable new-cap */
+/* eslint-disable no-undef */
 import 'leaflet-routing-machine';
 import { playAudioDirection } from './audioInstructions';
 

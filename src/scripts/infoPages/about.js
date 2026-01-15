@@ -1,2 +1,2 @@
-import "../../styles/styles.css";
-import "../../styles/about.css";
+import '../../styles/styles.css';
+import '../../styles/about.css';

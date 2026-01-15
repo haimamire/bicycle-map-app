@@ -1,8 +1,0 @@
-<a href="https://www.flaticon.com/free-icons/ecommerce" title="ecommerce icons">Ecommerce icons created by Arkinasi - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/wrench" title="wrench icons">Wrench icons created by Fathema Khanom - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/nav" title="nav icons">Nav icons created by Alfredo Creates - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/car-repair" title="car repair icons">Car repair icons created by Aranagraphics - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/shop" title="shop icons">Shop icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/google-maps" title="google-maps icons">Google-maps icons created by Smashicons - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/bicycle" title="bicycle icons">Bicycle icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/car-parking" title="car parking icons">Car parking icons created by MONO - Flaticon</a>
