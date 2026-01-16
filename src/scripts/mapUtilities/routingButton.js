@@ -1,5 +1,5 @@
 import { drawRoute } from './routingMachine';
-import { resetAudioHistory } from './audioInstructions';
+import { resetAudioHistory, unlockAudio } from './audioInstructions';
 
 export function addRoutingBtn(map, lat, lng) {
   const routingBtn = document.createElement('button');
@@ -14,6 +14,7 @@ export function addRoutingBtn(map, lat, lng) {
     map.closePopup();
 
     resetAudioHistory();
+    unlockAudio();
     drawRoute(map, lat, lng, true);
   });
 

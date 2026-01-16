@@ -11,19 +11,19 @@ export function initGPS(map) {
       keepCurrentZoomLevel: true,
       showPopup: false,
       markerStyle: {
-        className: "leaflet-control-locate-marker",
-        color: "#fff",
-        fillColor: "#2A93EE",
+        className: 'leaflet-control-locate-marker',
+        color: '#fff',
+        fillColor: '#2A93EE',
         fillOpacity: 1,
         weight: 3,
         opacity: 1,
-        radius: 11
+        radius: 11,
       },
       compassStyle: {
-        fillColor: "#2A93EE",
+        fillColor: '#2A93EE',
         fillOpacity: 1,
         weight: 0,
-        color: "#fff",
+        color: '#fff',
         opacity: 1,
         radius: 13, // How far is the arrow from the center of the marker
         width: 12, // Width of the arrow

@@ -7,72 +7,85 @@ import sharpLeftAudio from '../../audio/sharp-left.mp3';
 import straightAudio from '../../audio/straight.mp3';
 import arrivalAudio from '../../audio/arrival.mp3';
 
-let lastLocation;
+let lastLocation = null;
+let audioUnlocked = false;
+
+const audioMap = {
+  left: new Audio(leftAudio),
+  right: new Audio(rightAudio),
+  'slight left': new Audio(slightLeftAudio),
+  'slight right': new Audio(slightRightAudio),
+  'sharp left': new Audio(sharpLeftAudio),
+  'sharp right': new Audio(sharpRightAudio),
+  straight: new Audio(straightAudio),
+  arrive: new Audio(arrivalAudio),
+};
+
+Object.values(audioMap).forEach((audio) => {
+  audio.preload = 'auto';
+  audio.playsInline = true;
+});
+
+export function unlockAudio() {
+  if (audioUnlocked) return;
+
+  Object.values(audioMap).forEach((audio) => {
+    const originalVolume = audio.volume;
+    audio.volume = 0;
+    audio.muted = true;
+
+    audio
+      .play()
+      .then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.muted = false;
+        audio.volume = originalVolume;
+      })
+      .catch(() => {
+        audio.muted = false;
+        audio.volume = originalVolume;
+      });
+  });
+
+  audioUnlocked = true;
+}
 
 export function resetAudioHistory() {
-  lastLocation = '';
+  lastLocation = null;
 }
 
 export function playAudioDirection(allDirections) {
+  if (!audioUnlocked) return;
+
   const currentDirection = allDirections[1];
-  console.log(`current direction: ${JSON.stringify(currentDirection)}`);
-  console.log(`last location: ${JSON.stringify(lastLocation)}`);
-  console.log(`current location: ${JSON.stringify(currentDirection.location)}`);
+  if (!currentDirection) return;
+
   if (isValid(currentDirection)) {
     lastLocation = currentDirection.location;
     playAudio(currentDirection);
   }
 }
 
-function playAudio(currentDirection) {
-  const { type, modifier } = currentDirection;
+function playAudio(direction) {
   let audio;
 
-  if (type === 'arrive') {
-    audio = new Audio(arrivalAudio);
-    console.log('arrival audio played');
+  if (direction.type === 'arrive') {
+    audio = audioMap.arrive;
   } else {
-    switch (modifier) {
-      case 'left':
-        audio = new Audio(leftAudio);
-        console.log('left audio played');
-        break;
-      case 'right':
-        audio = new Audio(rightAudio);
-        console.log('right audio played');
-        break;
-      case 'slight left':
-        audio = new Audio(slightLeftAudio);
-        console.log('slight right audio played');
-        break;
-      case 'slight right':
-        audio = new Audio(slightRightAudio);
-        console.log('slight left audio played');
-        break;
-      case 'sharp left':
-        audio = new Audio(sharpLeftAudio);
-        console.log('sharp left audio played');
-        break;
-      case 'sharp right':
-        audio = new Audio(sharpRightAudio);
-        console.log('sharp right audio played');
-        break;
-      default:
-        audio = new Audio(straightAudio);
-        console.log('straight audio played');
-        break;
-    }
+    audio = audioMap[direction.modifier] || audioMap.straight;
   }
-  audio.play();
+
+  audio.pause();
+  audio.currentTime = 0;
+
+  audio.play().catch(() => {});
 }
 
 function isValid(direction) {
-  if (
+  return (
     direction.distance <= 50 &&
-    JSON.stringify(direction.location) !== JSON.stringify(lastLocation) &&
-    direction.type !== 'depart'
-  ) {
-    return true;
-  }
-  return false;
+    direction.type !== 'depart' &&
+    JSON.stringify(direction.location) !== JSON.stringify(lastLocation)
+  );
 }
